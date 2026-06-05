@@ -1,0 +1,197 @@
+/* ── Navbar — Light Theme ── */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 1.2rem;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid var(--border-light, #E8ECF0);
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.scrolled {
+  box-shadow: 0 2px 20px rgba(36, 59, 82, 0.10);
+  border-bottom-color: var(--border, #D4DCE3);
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* ── Logo ── */
+.logo {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+.logo:hover { opacity: 0.75; }
+
+.logoImg {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── Desktop nav ── */
+.nav {
+  display: none;
+  gap: 0.1rem;
+}
+
+.navLink {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.87rem;
+  font-weight: 500;
+  color: var(--text-secondary, #4A5E6E);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+  text-decoration: none;
+}
+.navLink:hover {
+  color: var(--ak-navy, #243B52);
+  background: var(--bg-surface2, #EDF0F3);
+}
+
+/* ── Actions ── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ctaBtn {
+  display: none;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--ak-green, #2C7A32);
+  border-radius: 6px;
+  padding: 0.48rem 1.15rem;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(44, 122, 50, 0.25);
+}
+.ctaBtn:hover {
+  background: var(--ak-green-dark, #1E5823);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(44, 122, 50, 0.35);
+}
+
+/* ── Hamburger ── */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.hamburger:hover { background: var(--bg-surface2, #EDF0F3); }
+
+.bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ak-navy, #243B52);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+.barOpen1 { transform: translateY(7px) rotate(45deg); }
+.barOpen2 { opacity: 0; transform: scaleX(0); }
+.barOpen3 { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobile Drawer ── */
+.drawer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0 1.2rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1),
+              padding 0.3s ease;
+  background: #fff;
+}
+
+.drawerOpen {
+  max-height: 400px;
+  padding: 1rem 1.2rem 1.4rem;
+  border-top: 1px solid var(--border-light, #E8ECF0);
+}
+
+.drawerLink {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary, #4A5E6E);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-light, #E8ECF0);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.drawerLink:hover { color: var(--ak-navy, #243B52); }
+
+.drawerCta {
+  display: block;
+  margin-top: 0.8rem;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--ak-green, #2C7A32);
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.drawerBack {
+  background: none;
+  border: 1px solid var(--border, #D4DCE3);
+  border-radius: 8px;
+  padding: 0.65rem;
+  margin-top: 0.5rem;
+  color: var(--text-muted, #7A8D9C);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.drawerBack:hover {
+  color: var(--ak-navy, #243B52);
+  border-color: var(--ak-navy, #243B52);
+}
+
+/* ══ Desktop ══ */
+@media (min-width: 768px) {
+  .header { padding: 0 2rem; }
+  .inner { height: 80px; }
+  .logoImg { height: 46px; }
+  .nav { display: flex; }
+  .ctaBtn { display: block; }
+  .hamburger { display: none; }
+  .drawer { display: none; }
+}

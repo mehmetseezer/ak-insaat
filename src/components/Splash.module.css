@@ -1,0 +1,345 @@
+/* ================================================
+   SPLASH — Premium Corporate Split Screen
+   Ak İnşaat: Lacivert #243B52 + Yeşil #2C7A32
+   Mobile-first, fully responsive
+   ================================================ */
+
+/* ── Container ── */
+.container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;   /* mobile: dikey */
+  overflow: hidden;
+  background: #F4F6F8;
+  transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1),
+              opacity 0.8s ease;
+}
+
+.exitLeft {
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Panels ── */
+.panel {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  cursor: pointer;
+  transition: flex 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+  min-height: 0;
+}
+
+.panel.expand { flex: 1.7; }
+.panel.shrink { flex: 0.3; }
+
+/* ── Background image ── */
+.bgImage {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.06);
+  transition: transform 0.7s cubic-bezier(0.33, 1, 0.68, 1);
+  will-change: transform;
+}
+
+.panel.expand .bgImage,
+.panel:hover .bgImage {
+  transform: scale(1);
+}
+
+/* ── Overlay ──
+   Sol (Ak İnşaat): lacivert tabanlı
+   Sağ (Yeşil Sağlık): koyu yeşil tabanlı               */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(26, 44, 62, 0.96) 0%,
+    rgba(26, 44, 62, 0.65) 45%,
+    rgba(36, 59, 82, 0.35) 100%
+  );
+  transition: background 0.5s ease;
+}
+
+.overlayGreen {
+  background: linear-gradient(
+    to top,
+    rgba(10, 40, 20, 0.96) 0%,
+    rgba(10, 55, 25, 0.65) 45%,
+    rgba(20, 80, 35, 0.30) 100%
+  );
+}
+
+.panel.expand .overlay {
+  background: linear-gradient(
+    to top,
+    rgba(26, 44, 62, 0.94) 0%,
+    rgba(44, 122, 50, 0.12) 70%,
+    rgba(36, 59, 82, 0.28) 100%
+  );
+}
+
+.panel.expand .overlayGreen {
+  background: linear-gradient(
+    to top,
+    rgba(10, 40, 20, 0.94) 0%,
+    rgba(44, 122, 50, 0.18) 70%,
+    rgba(20, 80, 35, 0.22) 100%
+  );
+}
+
+/* ── Content block ── */
+.content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.6rem 1.4rem 2rem;
+  color: #fff;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.panel.shrink .content {
+  opacity: 0.15;
+  transform: translateY(8px);
+}
+
+/* ── Tag pill ── */
+.tag {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #fff;
+  background: var(--ak-green, #2C7A32);
+  padding: 0.28rem 0.75rem;
+  border-radius: 3px;
+  margin-bottom: 0.7rem;
+  text-transform: uppercase;
+}
+
+.tagGreen {
+  background: rgba(44, 122, 50, 0.85);
+}
+
+/* ── Panel title ── */
+.panelTitle {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.05;
+  margin: 0 0 0.6rem;
+  color: #fff;
+}
+
+/* ── Description ── */
+.panelDesc {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.68);
+  margin-bottom: 1.1rem;
+  max-width: 280px;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  max-height: 80px;
+}
+
+.panel.shrink .panelDesc {
+  max-height: 0;
+  opacity: 0;
+  margin-bottom: 0;
+}
+
+/* ── CTA ── */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: var(--ak-green, #2C7A32);
+  border: none;
+  border-radius: 5px;
+  padding: 0.45rem 0.9rem;
+  transition: gap 0.3s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.ctaGreen {
+  background: rgba(44, 122, 50, 0.85);
+}
+
+.panel.expand .cta,
+.panel:hover .cta {
+  gap: 0.8rem;
+  background: var(--ak-green-dark, #1E5823);
+  transform: translateY(-1px);
+}
+
+.panel.expand .ctaGreen,
+.panel:hover .ctaGreen {
+  background: var(--ak-green-dark, #1E5823);
+}
+
+/* ── Corner ornaments ── */
+.cornerTL,
+.cornerBR {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-color: rgba(255, 255, 255, 0.25);
+  border-style: solid;
+  transition: width 0.4s ease, height 0.4s ease, border-color 0.4s ease, opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.cornerTL { top: 18px; left: 18px; border-width: 1px 0 0 1px; }
+.cornerBR { bottom: 18px; right: 18px; border-width: 0 1px 1px 0; }
+
+.panel.shrink .cornerTL,
+.panel.shrink .cornerBR {
+  opacity: 0;
+}
+
+.panel.expand .cornerTL,
+.panel.expand .cornerBR,
+.panel:hover .cornerTL,
+.panel:hover .cornerBR {
+  width: 52px;
+  height: 52px;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.cornerGreen { border-color: rgba(255, 255, 255, 0.22); }
+.panel.expand .cornerGreen,
+.panel:hover .cornerGreen {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+/* ── Center badge ──
+   Açık arka plan, lacivert metin — light tema uyumlu */
+/* ── Top Header ── */
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.headerLogo {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+  display: block;
+}
+
+/* ── Divider ── */
+.divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dividerLine {
+  width: 1px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.dividerText {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+  text-transform: uppercase;
+  background: rgba(36, 59, 82, 0.45);
+  backdrop-filter: blur(8px);
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+}
+
+/* ══════════════════════════════════════════════
+   TABLET & DESKTOP  (min-width: 640px)
+   — Horizontal split
+   ══════════════════════════════════════════════ */
+@media (min-width: 640px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .center {
+    flex-direction: column;
+    top: 0; bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    justify-content: center;
+  }
+
+  .divider {
+    flex-direction: row;
+  }
+
+  .dividerLine {
+    width: 30px;
+    height: 1px;
+  }
+
+  .content {
+    bottom: 12%;
+    padding: 0 3rem;
+  }
+
+  .panelRight .content {
+    text-align: right;
+  }
+
+  .panelRight .panelDesc {
+    margin-left: auto;
+  }
+
+  .panelTitle {
+    font-size: clamp(2.2rem, 4vw, 4rem);
+  }
+
+  .panelDesc {
+    font-size: 1rem;
+    max-width: 300px;
+    margin-bottom: 1.6rem;
+  }
+
+  .tag {
+    font-size: 0.62rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .cornerTL { top: 28px; left: 28px; }
+  .cornerBR { bottom: 28px; right: 28px; }
+
+  .header {
+    height: 100px;
+  }
+
+  .headerLogo {
+    height: 38px;
+  }
+}
