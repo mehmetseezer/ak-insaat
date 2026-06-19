@@ -94,7 +94,7 @@
   z-index: 4;
   display: flex;
   align-items: center;
-  padding: 7rem 1.5rem 9rem;
+  padding: 6.5rem 1.5rem 230px;
   max-width: 760px;
 }
 
@@ -204,17 +204,21 @@
 .secondary {
   display: inline-flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.9);
+  background: rgba(26, 44, 62, 0.85); /* Dark backdrop for readability */
+  backdrop-filter: blur(4px);
+  color: #fff;
   font-weight: 600;
   font-size: 0.88rem;
   padding: 0.8rem 1.6rem;
   border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   text-decoration: none;
-  transition: background 0.2s;
+  transition: background 0.2s, border-color 0.2s;
 }
-.secondary:hover { background: rgba(255, 255, 255, 0.2); }
+.secondary:hover {
+  background: rgba(26, 44, 62, 0.98);
+  border-color: rgba(255, 255, 255, 0.8);
+}
 
 /* ── Stats bar ── */
 .statsBar {
@@ -264,7 +268,7 @@
   z-index: 6;
   width: 46px;
   height: 46px;
-  display: flex;
+  display: none; /* Hide on mobile */
   align-items: center;
   justify-content: center;
   background: rgba(255, 255, 255, 0.12);
@@ -290,7 +294,7 @@
 /* ── Dot indicators ── */
 .dotsRow {
   position: absolute;
-  bottom: 82px;   /* above stats bar */
+  bottom: 160px;   /* above stats bar on mobile */
   left: 50%;
   transform: translateX(-50%);
   z-index: 6;
@@ -336,7 +340,7 @@
 .counter {
   position: absolute;
   right: 1.5rem;
-  bottom: 88px;
+  bottom: 166px;   /* above stats bar on mobile */
   z-index: 6;
   display: flex;
   align-items: center;
@@ -378,11 +382,15 @@
   .stat:last-child { border-right: none; }
 
   .contentWrap {
-    padding: 8rem 3rem 9rem;
+    padding: 8rem 6.5rem 9rem;
   }
 
   .arrowLeft  { left: 2rem; }
   .arrowRight { right: 2rem; }
+
+  .arrow {
+    display: flex;
+  }
 
   .arrow:hover {
     transform: translateY(-50%) scale(1.06);
@@ -394,8 +402,8 @@
 
 @media (min-width: 1024px) {
   .contentWrap {
-    padding: 9rem 5rem 9rem;
-    max-width: 900px;
+    padding: 9rem 8.5rem 9rem;
+    max-width: 950px;
   }
 
   .arrow {

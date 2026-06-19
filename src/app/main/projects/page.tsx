@@ -73,7 +73,7 @@ export default function ProjectsPage() {
       <Navbar onBackToSplash={handleBackToSplash} />
 
       {/* Spacer for fixed header */}
-      <div style={{ height: "90px" }} />
+      <div style={{ height: "calc(var(--header-height) + 18px)" }} />
 
       {/* ── PROJECTS ── */}
       <section className={styles.section} style={{ minHeight: "calc(100vh - 220px)" }}>
@@ -88,12 +88,7 @@ export default function ProjectsPage() {
           <div className={styles.projectsGrid}>
             {projects.map((p) => (
               <div key={p.id} className={styles.projectCard}>
-                <div className={styles.projectImg} style={{ backgroundImage: `url('${p.img}')` }}>
-                  <span className={`${styles.projectStatus} ${
-                    p.status === "Tamamlandı" ? styles.statusDone :
-                    p.status === "Yapım Aşamasında" ? styles.statusWip : styles.statusPlan
-                  }`}>{p.status}</span>
-                </div>
+                <div className={styles.projectImg} style={{ backgroundImage: `url('${p.img}')` }} />
                 <div className={styles.projectInfo}>
                   <span className={styles.projectType}>{p.type} · {p.year}</span>
                   <h3 className={styles.projectName}>{p.name}</h3>

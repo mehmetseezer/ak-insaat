@@ -16,7 +16,7 @@ export default function ContactPage() {
       <Navbar onBackToSplash={handleBackToSplash} />
 
       {/* Spacer for fixed header */}
-      <div style={{ height: "90px" }} />
+      <div style={{ height: "calc(var(--header-height) + 18px)" }} />
 
       {/* ── CONTACT ── */}
       <section className={styles.section} style={{ minHeight: "calc(100vh - 220px)" }}>

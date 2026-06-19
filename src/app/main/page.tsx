@@ -71,11 +71,7 @@ export default function MainPage() {
           <div className={styles.projectsGrid}>
             {featuredProjects.map((p) => (
               <div key={p.id} className={styles.projectCard}>
-                <div className={styles.projectImg} style={{ backgroundImage: `url('${p.img}')` }}>
-                  <span className={`${styles.projectStatus} ${
-                    p.status === "Tamamlandı" ? styles.statusDone : styles.statusWip
-                  }`}>{p.status}</span>
-                </div>
+                <div className={styles.projectImg} style={{ backgroundImage: `url('${p.img}')` }} />
                 <div className={styles.projectInfo}>
                   <span className={styles.projectType}>{p.type} · {p.year}</span>
                   <h3 className={styles.projectName}>{p.name}</h3>

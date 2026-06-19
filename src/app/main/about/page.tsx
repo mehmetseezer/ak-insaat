@@ -48,7 +48,7 @@ export default function AboutPage() {
       <Navbar onBackToSplash={handleBackToSplash} />
 
       {/* Spacer for fixed header */}
-      <div style={{ height: "80px" }} />
+      <div style={{ height: "calc(var(--header-height) + 8px)" }} />
 
       {/* ── HEADER BANNER ── */}
       <div className={styles.aboutHeader} style={{ backgroundImage: "url('/images/hero_2.png')" }}>
