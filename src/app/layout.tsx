@@ -17,7 +17,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Yeşil Grup Holding",
+  title: "Yeşil Grup",
   description:
     "Yeşil Grup bünyesindeki Ak İnşaat ve Yeşil Sağlık şirketleri hakkında bilgi alın. Modern inşaat çözümleri ve sağlık hizmetleri tek çatı altında.",
   keywords: ["Yeşil Grup", "Ak İnşaat", "Yeşil Sağlık", "inşaat", "gayrimenkul", "sağlık"],
